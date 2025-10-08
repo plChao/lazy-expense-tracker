@@ -1,20 +1,15 @@
-# ---- Base ----
-FROM node:18-alpine
-
-# Set working directory
-WORKDIR /app
-
-# Copy dependency files first (for caching)
-COPY package*.json ./
+# Base image: Ubuntu + Node
+FROM ubuntu:22.04
 
 # Install dependencies
-RUN npm install
+RUN apt-get update && apt-get install -y curl git bash \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g yarn \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy rest of project files
-COPY . .
+# Set workdir
+WORKDIR /usr/src/app
 
-# Expose Vite's default dev port
-EXPOSE 5173
-
-# Run in dev mode
-CMD ["npm", "run", "dev", "--", "--host"]
+# Default command
+CMD [ "bash" ]
