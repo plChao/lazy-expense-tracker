@@ -60,7 +60,6 @@ Thumbs.db
 docker-compose.override.yml
 docker-compose.override.yaml
 docker-compose.override.*
-.dockerignore
 
 # Optional: container runtime volumes (if you mount node_modules)
 node_modules_cache/
