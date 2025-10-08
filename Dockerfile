@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y curl git bash \
     && rm -rf /var/lib/apt/lists/*
 
 # Set workdir
-WORKDIR /usr/src/app
+WORKDIR /home
 
 # Default command
 CMD [ "bash" ]
